@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { activateKabaya, closeKabaya } from './redux';
+import { activateKabaya, closeKabaya, testKabaya } from './redux';
 
   export class Home extends Component {
     render() {
@@ -9,9 +9,9 @@ import { activateKabaya, closeKabaya } from './redux';
         if(this.props.kabaya.title){
             return (
                 <View>
-                <Text style={{marginTop: 200}}>{this.props.kabaya.title || '成功!'}</Text>
+                <Text style={{marginTop: 200}}>{this.props.kabaya.title}</Text>
                     <Button
-                    onPress={this.props.closeKabaya}
+                    onPress={() => this.props.closeKabaya({})}
                     title="Click me"
                     color="#841584"
 
@@ -19,11 +19,14 @@ import { activateKabaya, closeKabaya } from './redux';
                 </View>
             );
         }
+
+        
+
         return (
             <View>
             <Text style={{marginTop: 200}}>成功!</Text>
                 <Button
-                onPress={() => this.props.activateKabaya({ title: '私の名前はカバヤです' })}
+                onPress={() => this.props.testKabaya({ title: 'テストのカバヤです' })}
                 title="Click me"
                 color="#841584"
 
@@ -42,6 +45,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {  
   // action creatorの名前が入っている。
   activateKabaya,
+  testKabaya,
   closeKabaya,
 };
 

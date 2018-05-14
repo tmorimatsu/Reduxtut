@@ -6,11 +6,18 @@ import {
     createStore,
   } from 'redux';
 
+
+  
   // actions.js
   export const activateKabaya = kabaya => ({  
     type: 'ACTIVATE_KABAYA',
     kabaya,
   });
+
+  export const testKabaya = testkabaya => ({
+      type: 'TEST_KABAYA',
+      testkabaya,
+  })
 
   export const closeKabaya = () => ({  
     type: 'CLOSE_KABAYA',
@@ -23,6 +30,8 @@ import {
     switch (action.type) {
       case 'ACTIVATE_KABAYA':
         return action.kabaya;
+      case 'TEST_KABAYA':
+        return action.testkabaya;
       case 'CLOSE_KABAYA':
         return {};
       default:
@@ -34,7 +43,7 @@ import {
     kabaya,
   });
 
-  
+
 
   // store.js
   export function configureStore(initialState = {}) {  
